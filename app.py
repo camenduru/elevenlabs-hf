@@ -19,6 +19,11 @@ badges = """
 [ ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ](https://github.com/elevenlabs-python)
  
 </span>
+<span style="margin-right: 5px"> 
+
+[ ![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white) ](https://twitter.com/elevenlabsio)
+ 
+</span>
 <span>
 
 [ ![](https://dcbadge.vercel.app/api/server/elevenlabs) ](https://discord.gg/elevenlabs)
