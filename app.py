@@ -13,7 +13,12 @@ def pad_buffer(audio):
 
 def generate_voice(text, voice_name, model_name, api_key):
     try:
-        audio = generate(text, voice=voice_name, model=model_name, api_key=api_key)
+        audio = generate(
+            text, 
+            voice=voice_name, 
+            model=model_name, 
+            api_key=api_key if api_key != '' else None
+        )
     except UnauthenticatedRateLimitError as e:
         raise gr.Error("Thanks for trying out ElevenLabs TTS! You've reached the free tier limit. Please provide an API key to continue.") 
     except Exception as e:
@@ -45,7 +50,7 @@ A demo of the world's most advanced TTS systems, made by [ElevenLabs](https://el
 """
 
 with gr.Blocks() as block:
-    gr.Markdown("# ElevenLabs TTS")
+    gr.Markdown('[ ![ElevenLabs](https://raw.githubusercontent.com/elevenlabs/elevenlabs-python/main/LOGO.png) ](https://elevenlabs.io)')
     gr.Markdown(badges)
     gr.Markdown(description)
     
@@ -98,5 +103,4 @@ with gr.Blocks() as block:
         queue=True
     )
 
-block.queue() 
-block.launch() 
+block.queue(max_size=99, concurrency_count=1).launch(debug=True)
