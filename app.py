@@ -16,7 +16,7 @@ badges = """
 <div style="display: flex">
 <span style="margin-right: 5px"> 
 
-[ ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ](https://github.com/elevenlabs-python)
+[ ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ](https://github.com/elevenlabs/elevenlabs-python)
  
 </span>
 <span style="margin-right: 5px"> 
