@@ -17,7 +17,7 @@ def generate_voice(text, voice_name, model_name, api_key):
             text, 
             voice=voice_name, 
             model=model_name, 
-            api_key=None # api_key if api_key != '' else None #
+            api_key=api_key if api_key != '' else None
         )
     except UnauthenticatedRateLimitError as e:
         raise gr.Error("Thanks for trying out ElevenLabs TTS! You've reached the free tier limit. Please provide an API key to continue.") 
