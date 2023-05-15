@@ -1,5 +1,5 @@
 ---
-title: Tts
+title: ElevenLabs TTS
 emoji: 🌍
 colorFrom: yellow
 colorTo: pink
