@@ -19,11 +19,12 @@ def generate_voice(text, voice_name, model_name, api_key):
             model=model_name, 
             api_key=api_key if api_key != '' else None
         )
+        return (44100, np.frombuffer(pad_buffer(audio), dtype=np.int16))
     except UnauthenticatedRateLimitError as e:
         raise gr.Error("Thanks for trying out ElevenLabs TTS! You've reached the free tier limit. Please provide an API key to continue.") 
     except Exception as e:
         raise gr.Error(e)
-    return (44100, np.frombuffer(pad_buffer(audio), dtype=np.int16))
+    
 
 badges = """
 <div style="display: flex">
