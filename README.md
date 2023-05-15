@@ -1,6 +1,6 @@
 ---
 title: ElevenLabs TTS
-emoji: 🌍
+emoji: 🗣️
 colorFrom: yellow
 colorTo: pink
 sdk: gradio
