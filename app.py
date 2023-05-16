@@ -11,13 +11,12 @@ def pad_buffer(audio):
         audio = audio + b'\0' * (element_size - (buffer_size % element_size))
     return audio 
 
-def generate_voice(text, voice_name, model_name, api_key):
+def generate_voice(text, voice_name, model_name):
     try:
         audio = generate(
-            text, 
+            text[:250], # Limit to 250 characters
             voice=voice_name, 
-            model=model_name, 
-            api_key=api_key if api_key != '' else None
+            model=model_name
         )
         return (44100, np.frombuffer(pad_buffer(audio), dtype=np.int16))
     except UnauthenticatedRateLimitError as e:
@@ -47,7 +46,7 @@ badges = """
 """
 
 description = """
-A demo of the world's most advanced TTS systems, made by [ElevenLabs](https://elevenlabs.io). Eleven Monolingual is designed to generate highly realistic voices in English, where Eleven Multilingual is a single model supporting multiple languages including English, German, Polish, Spanish, Italian, French, Portuguese, and Hindi. 
+A demo of the world's most advanced TTS systems, made by [ElevenLabs](https://elevenlabs.io). Eleven Monolingual is designed to generate highly realistic voices in English, where Eleven Multilingual is a single model supporting multiple languages including English, German, Polish, Spanish, Italian, French, Portuguese, and Hindi. Sign up on [ElevenLabs](https://elevenlabs.io) to get fast access, long-form generation, voice cloning, API keys, and more!
 """
 
 with gr.Blocks() as block:
@@ -56,7 +55,7 @@ with gr.Blocks() as block:
     gr.Markdown(description)
     
     input_text = gr.Textbox(
-        label="Input Text", 
+        label="Input Text (250 characters max)", 
         lines=2, 
         value="Hahaha OHH MY GOD! This is SOOO funny, I-I am Eleven and-and I am a text to speech system!!",
         elem_id="input_text"
@@ -77,12 +76,6 @@ with gr.Blocks() as block:
         elem_id="input_model",
     )
 
-    input_api_key = gr.Textbox(
-        label="API Key (Optional)",
-        lines=1,
-        elem_id="input_api_key"
-    )
-
     run_button = gr.Button(
         text="Generate Voice", 
         type="button"
@@ -94,7 +87,7 @@ with gr.Blocks() as block:
         elem_id="out_audio"
     )
         
-    inputs = [input_text, input_voice, input_model, input_api_key]
+    inputs = [input_text, input_voice, input_model]
     outputs = [out_audio]
     
     run_button.click(
@@ -104,4 +97,4 @@ with gr.Blocks() as block:
         queue=True
     )
 
-block.queue(max_size=99, concurrency_count=1).launch(debug=True)
+block.queue(concurrency_count=1).launch(debug=True)
