@@ -57,7 +57,7 @@ with gr.Blocks() as block:
     input_text = gr.Textbox(
         label="Input Text (250 characters max)", 
         lines=2, 
-        value="Hahaha OHH MY GOD! This is SOOO funny, I-I am Eleven and-and I am a text to speech system!!",
+        value="Hahaha OHH MY GOD! This is SOOO funny, I-I am Eleven a text-to-speech system!",
         elem_id="input_text"
     )
 
