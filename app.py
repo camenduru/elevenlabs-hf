@@ -48,7 +48,6 @@ A demo of the world's most advanced TTS systems, made by [ElevenLabs](https://el
 """
 
 with gr.Blocks() as block:
-    gr.Markdown('[ ![ElevenLabs](https://raw.githubusercontent.com/elevenlabs/elevenlabs-python/main/LOGO.png) ](https://elevenlabs.io)')
     gr.Markdown(badges)
     gr.Markdown(description)
     
